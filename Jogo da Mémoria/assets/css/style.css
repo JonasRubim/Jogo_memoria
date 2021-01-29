@@ -1,0 +1,136 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: "Righteous", cursive;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.7);
+  overflow: hidden;
+}
+
+.time {
+  margin-top: 10px;
+  background: yellow;
+  display: none;
+  border-radius: 10px 10px 0px 0px;
+  width: 200px;
+  height: 40px;
+  text-align: center;
+  position: absolute;
+  bottom: 0;
+  z-index: 2;
+  transition: ease 0.5s;
+}
+
+.time span {
+  line-height: 40px;
+  font-size: 30px;
+  color: #000;
+}
+.card {
+  width: 150px;
+  height: 150px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.5s;
+}
+.card_front,
+.card_back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 20px;
+  box-shadow: 10px 10px 10px rgba(0, 0, 0, 0.45);
+  backface-visibility: hidden;
+  cursor: pointer;
+}
+.flip {
+  transform: rotateY(180deg);
+}
+.card_front {
+  transform: rotateY(180deg);
+  background-color: #101c2c;
+}
+
+.card_back {
+  font-size: 30px;
+  font-weight: bold;
+  background-color: #05c3ff;
+  color: #101c2c;
+}
+
+#gameOver {
+  position: fixed;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  top: 0;
+  color: #fff;
+  font-size: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.msg_gameOver p {
+  font-size: 20px;
+  color: #eee;
+  text-align: center;
+  line-height: 30px;
+  letter-spacing: 0.1em;
+}
+
+#restart {
+  padding: 20px;
+  font-size: 20px;
+  font-weight: bold;
+  background-color: yellow;
+  border: none;
+  border-radius: 10px;
+  margin-top: 10px;
+  cursor: pointer;
+}
+#gameBoard {
+  max-width: 700px;
+  display: grid;
+  /* grid-template: 1fr 1fr 1fr 1fr 1fr / 1fr 1fr 1fr 1fr */
+  grid-template-columns: repeat(4, 1fr);
+  gap: 20px;
+}
+
+@media (max-width: 500px) {
+  body {
+    height: calc(100vh - 100px);
+  }
+  #gameBoard {
+    display: grid;
+    gap: 5px;
+  }
+  .card {
+    width: 90px;
+    height: 120px;
+  }
+  .card_front img {
+    width: 60px;
+    height: 60px;
+  }
+  #gameOver {
+    font-size: 20px;
+  }
+  .msg_gameOver p {
+    font-size: 10px;
+  }
+  #restart {
+    padding: 15px;
+  }
+}
